@@ -3,3 +3,44 @@
     margin: 0px;
     box-sizing: border-box;
 }
+
+.header-Nav {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background: #8EE3F5;
+}
+
+.ul-li {
+    display: inline-block;
+    margin: 5px;
+}
+
+.Nav-ul {
+    margin-left: 10px;
+}
+
+.li-a {
+    color: #3E517A;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.footer {
+    height: 50px;
+    background: #3E517A
+}
+
+.relleno {
+    margin: 10px;
+    height: 300px;
+    width: 300px;
+    background: #70CAD1;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
