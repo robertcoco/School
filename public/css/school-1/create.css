@@ -1,0 +1,59 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    background: #8cf;
+}
+
+.form {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px auto;    
+    width: 300px;
+    height: 400px;
+    background: #27f;
+    border-radius: 4px;
+    box-shadow : 25px 20px 5px 5px #8bf;
+}
+
+.container {
+    margin: 50px;
+}
+
+.student {
+    margin: 20px;
+    outline: none;
+    width: 250px;
+    border: none;
+    padding: 8px 10px;
+    box-shadow : 2px 2px 5px 0px #8cf;
+}
+
+#Create {
+    text-shadow: 2px 2px 3px #8cf;
+    margin: 20px;
+    font-weight:800;
+    text-align: center;
+    font-size: 30px
+}
+
+#Create-button {
+    font-weight:800;
+    border: none;
+    margin: 10px;
+    padding: 7px;
+    width: 250px;
+    font-size: 15px;
+    background: #fff;
+    box-shadow: 0px 0px 6px 0px #999;
+    transition: all .3s;
+}
+
+#Create-button:hover {
+    background: #8bf;    
+}
