@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 0px auto;    
-    width: 300px;
+    width: 380px;
     height: 400px;
     background: #27f;
     border-radius: 4px;
@@ -28,6 +28,7 @@ body {
 .student {
     margin: 20px;
     outline: none;
+    font-size: 15px;
     width: 250px;
     border: none;
     padding: 8px 10px;
