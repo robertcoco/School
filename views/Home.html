@@ -4,35 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../../public/css/school-1/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@100&family=Charis+SIL&family=Lato:ital,wght@1,900&family=Open+Sans&family=Overpass:ital,wght@0,600;1,500&family=Playfair+Display&family=Roboto+Mono:wght@300&family=Roboto+Slab:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
 
     <Header>
+
         <nav class="header-Nav">
             <ul class="Nav-ul">
-                <li class="ul-li"><a class="li-a" href="../views/Home.html">Home</a></li>
-                <li class="ul-li"><a class="li-a" href="../views/Login.html">Login</a></li>
-                <li class="ul-li"><a class="li-a" href="../views/Create.html">Register</a></li>
+                <li class="ul-li"><a class="li-a" href="./Home.html">Home</a></li>
+                <li class="ul-li"><a class="li-a" href="./Create.html">Create</a></li>
+            </ul>
+            <ul class="ul-login">
+                <li class="ul-li"><a class="li-a" href="./Login.html">Login</a></li>
             </ul>
         </nav>
+
     </Header>
 
     <div class="container">
         
-        <div class="relleno"></div>
-        <div class="relleno"></div>
-        <div class="relleno"></div>
-        <div class="relleno"></div>
-
+        <div class="students">
+            <nav class="Nav-students">
+                <ul class="search-button">
+                    <li class="li-students">
+                        <label for="input" class="label-students">
+                            Students
+                            <input type="text" class="input" placeholder="Search students">
+                        </label>
+                    </li>
+                </ul>
+                <ul class="ul-students">
+                    <li class="li-students"><a class="li-a-students" href="">New students</a></li>
+                    <li class="li-students"><a class="li-a-students" href="">Best students</a></li>
+                </ul>
+            </nav>
+        </div>
+        
     </div>
 
     <footer class="footer">
+
         <div class="footer-div"></div>
     </footer>
-
-    <script src="./scripts/main.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="../../public/scripts/school-1/main.js"></script>
 </body>
 </html>

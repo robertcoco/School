@@ -1,0 +1,1 @@
+gsap.fromTo('body', {background: '#2af'}, {background: '#8cf', duration:2});
