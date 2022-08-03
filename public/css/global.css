@@ -1,0 +1,23 @@
+:root {
+    --mainColor: #f3f3f3;
+    --secondaryColor-light: #27f;
+    --secondaryColor: #15e;
+    --actionColor: #3ddddd;
+    --lightFontColor: #444;
+    --lightFontColorLight: #ffffff;
+    --normalFontColor: #2e2e2e;
+    --normalFontColorLight: #fefefe;
+    --boldFontColor: #000;
+    --boldFontColorLight: #ddd;
+}
+
+* {
+    font-family: 'Roboto Mono', monospace;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--mainColor);
+}

@@ -1,25 +1,18 @@
-const router = require("./routes/router")
+require("dotenv").config()
 const express = require("express")
+const cors = require("cors")
 const path = require("path")
-const { create } = require("express-handlebars")
+const router = require("./routes/router")
 
 const port = process.env.PORT || 3000
-const viewsDir = path.join(__dirname, "views/default")
 
 const app = express()
-const hbs = create({
-    extname: "hbs",
-    layoutsDir: `${viewsDir}/layouts`,
-    defaultLayout: "index"
-})
 
 // app config
-app.use( express.static(path.join(__dirname, "public")) )
-app.set("view engine", "hbs")
-app.engine("hbs", hbs.engine)
-app.set('views', viewsDir)
+app.use( express.static(path.join(__dirname, "/public")) )
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 app.use("/", router)
 
 app.listen(port, ()=> {
