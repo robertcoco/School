@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
+    "migration": "node ./migrations/index.js",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,11 +21,13 @@
   },
   "homepage": "https://github.com/robertcoco/School#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-graphql": "^0.12.0",
     "graphql": "^16.5.0",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.8.1"
   }
 }

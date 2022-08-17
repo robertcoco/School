@@ -1,45 +1,79 @@
+const { MongoServerError } = require("mongodb")
+const { User } = require("../../models/user")
+const { School } = require("../../models/school")
+const { Student } = require("../../models/student")
+const { renamePropertyOfObj } = require("../../utils/helpers")
+
 module.exports = { 
-    getUser: () => ({
-        id: "adasdsajdskajdsnka",
-        name: "Albert",
-        lastname: "Admin",
-        password: "kslkjdaksdla",
-        school: "sa156s6d5s465asds65a"
-    }),
-    getSchool: () => ({
-        id: "5a6da5da6da1sd",
-        name: "Aladin Highest",
-        direction: "Another World",
-        studentsQuantity: 35,
-        logo: "some/day.jsml"
-    }),
-    getStudent: () => ({
-        id: "2sa6d4ad54sa89",
-        name: "Pablo",
-        lastname: "Alberton Sazger",
-        admissionDate: "15568",
-        age: 25,
-        averageGrade: 75.68,
-        school: "65s56da8d6a"
-    }),
-    getAllStudents: () => ([
-        {
-            id: "2sa6d4ad54sa89",
-            name: "Pavel",
-            lastname: "Laragon Sazger",
-            admissionDate: "15568",
-            age: 16,
-            averageGrade: 75.68,
-            school: "65s56da8d6a"
-        },
-        {
-            id: "2sa6d4ad54sa89",
-            name: "Miguel",
-            lastname: "Sazger Mateo",
-            admissionDate: "15568",
-            age: 20,
-            averageGrade: 75.68,
-            school: "65s56da8d6a"
+    user: async ({ id }) => {
+        try {
+            const user = await User.get(id)
+            if(!user) {
+                throw new Error("User not found, error 404")
+            }
+            
+            renamePropertyOfObj(user, "_id", "id")
+            delete user.password
+            return user
+        } catch(err) {
+            if(err instanceof MongoServerError) {
+                console.log(err)
+                throw new Error("Server Error 500: server could not access the data")
+            }
+
+            throw err;
         }
-    ]),
+    },
+    school: async ({ id }) => {
+        try {
+            const school = await School.get(id)
+
+            if(!school) {
+                throw new Error("school not found, error 404")
+            }
+
+            renamePropertyOfObj(school, "_id", "id")
+            return school
+        } catch(err) {
+            if(err instanceof MongoServerError) {
+                console.log(err)
+                throw new Error("Server Error 500: server could not access the data")
+            }
+
+            throw err;
+        }
+    },
+    student: async ({ id }) => {
+        try {
+            const student = await Student.get(id)
+
+            if(!student) {
+                throw new Error("student not found, error 404")
+            }
+
+            renamePropertyOfObj(student, "_id", "id")
+            return student
+        } catch(err) {
+            if(err instanceof MongoServerError) {
+                console.log(err)
+                throw new Error("Server Error 500: server could not access the data")
+            }
+
+            throw err;
+        }
+    },
+    students: async () => {
+        try {
+            const students = await Student.getAll()
+            students.forEach((student) => renamePropertyOfObj(student, "_id", "id"))
+            return students
+        } catch(err) {
+            if(err instanceof MongoServerError) {
+                console.log(err)
+                throw new Error("Server Error 500: server could not access the data")
+            }
+
+            throw err;
+        }
+    },
 };

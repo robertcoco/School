@@ -1,11 +1,11 @@
-require("dotenv").config()
 const express = require("express")
 const cors = require("cors")
 const path = require("path")
 const UseRouters = require("./utils/useRouter")
 const { requestLogger, errorLogger } = require("./middlewares/appLogger")
+const config = require("./config")
 
-const port = process.env.PORT || 3000
+const port = config.port || 3000
 
 const app = express()
 

@@ -3,8 +3,6 @@ scalar Date
 type User {
     id: ID
     name: String
-    lastname: String
-    password: String
     school: ID
 }
 
@@ -12,6 +10,7 @@ type School {
     id: ID
     name: String
     direction: String
+    type: String
     studentsQuantity: Int
     logo: String
 }
@@ -23,18 +22,19 @@ type Student {
     admissionDate: Date
     age: Int
     averageGrade: Float
+    direction: String
     school: ID
 }
 
 input UserInput {
     name: String!
-    lastname: String!
     password: String!
-    School: ID!
+    school: ID!
 }
 
 input SchoolInput {
     name: String!
+    type: String!
     direction: String
 }
 
@@ -45,18 +45,28 @@ input StudentInput {
     admissionDate: Date!
     averageGrade: Float!
     direction: String
+    school: ID!
+}
+
+input StudentUpdateInput {
+    name: String
+    lastname: String
+    age: Int
+    admissionDate: Date
+    averageGrade: Float
+    direction: String
+    school: ID
 }
 
 type Query {
-    getUser(id: ID!): User
-    getSchool(id: ID!): School
-    getStudent(id: ID!): Student
-    getAllStudents: [Student]
+    user(id: ID!): User
+    school(id: ID!): School
+    student(id: ID!): Student
+    students: [Student!]!
 }
 
 type Mutation {
     createStudent(input: StudentInput!): Student
-    updateStudent(id: ID!): Student
+    updateStudent(id: ID!, input: StudentUpdateInput): Student
     deleteStudent(id: ID!): Student
 }
-
