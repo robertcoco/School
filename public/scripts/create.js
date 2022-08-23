@@ -13,11 +13,12 @@ button.addEventListener('click', () => {
   const formatDate = (current_datetime)=>{
     let formatted_date = (
       (
-        (current_datetime.getMonth() < 10) ?("0" + (current_datetime.getMonth() + 1)):(current_datetime.getMonth() + 1)) + "-" + (current_datetime.getDate()
+        (current_datetime.getMonth() < 10) ?("0" + (current_datetime.getMonth() + 1)):(current_datetime.getMonth() + 1)) 
+        + "-" + (current_datetime.getDate()
       ) + "-" + current_datetime.getFullYear()
-      );
+    );
     return formatted_date;
-}
+  }
 
   date = formatDate(fecha);
 

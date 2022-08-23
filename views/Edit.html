@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/create.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@100&family=Charis+SIL&family=Lato:ital,wght@1,900&family=Open+Sans&family=Overpass:ital,wght@0,600;1,500&family=Playfair+Display&family=Roboto+Mono:wght@300&family=Roboto+Slab:wght@600;700&display=swap" rel="stylesheet">    <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@100&family=Charis+SIL&family=Lato:ital,wght@1,900&family=Open+Sans&family=Overpass:ital,wght@0,600;1,500&family=Playfair+Display&family=Roboto+Mono:wght@300&family=Roboto+Slab:wght@600;700&display=swap" rel="stylesheet">
+    <title>Create</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form" action="/students" >
+            <label for="" id = "Create">
+                Update Students
+            </label>
+            <input type="text" name="name" id="name" placeholder="Name">
+            <input type="text" name="lastName" id="lastName" placeholder="Last name">
+            <input type="number" name="age" id="age" placeholder="Age">
+            <input type="date" name="date" id="date" placeholder="Date">
+            <input type="number" step="0.01" name="averageGrade" id="averageGrade" placeholder="Avarage grade">
+            <input type="text" name="direction" id="direction" placeholder="Direction">
+            <input type="hidden" name="school" id = "school" value="62f91bdb041380be3a63c38a" >
+
+            <input id="Edit-Button" type="submit" value="Create">
+        </form>
+        <button class="goBackBT"><a href="/home">Go Back</a></button>
+    </div>
+    
+    <script src="/scripts/edit.js"></script>
+</body>
+</html>
