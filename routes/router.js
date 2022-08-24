@@ -15,4 +15,12 @@ router.get('/create', (req, res)=> {
     res.sendFile(`${renderPath}/Create.html`)
 })
 
+router.get('/students', (req, res)=> {
+    res.sendFile(`${renderPath}/Students.html`)
+})
+
+router.get('/edit', (req, res)=> {
+    res.sendFile(`${renderPath}/Edit.html`)
+})
+
 module.exports = router
