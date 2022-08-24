@@ -26,6 +26,10 @@ type Student {
     school: ID
 }
 
+type LoggedResponse {
+    token: String
+}
+
 input UserInput {
     name: String!
     password: String!
@@ -58,6 +62,11 @@ input StudentUpdateInput {
     school: ID
 }
 
+input LoginInput {
+    username: String!
+    password: String!
+}
+
 type Query {
     user(id: ID!): User
     school(id: ID!): School
@@ -65,7 +74,9 @@ type Query {
     students: [Student!]!
 }
 
+
 type Mutation {
+    login(input: LoginInput!): LoggedResponse
     createStudent(input: StudentInput!): Student
     updateStudent(id: ID!, input: StudentUpdateInput): Student
     deleteStudent(id: ID!): Student

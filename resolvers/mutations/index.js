@@ -3,19 +3,24 @@ const { User } = require("../../models/user")
 const { Student } = require("../../models/student")
 const { renamePropertyOfObj } = require("../../utils/helpers")
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
+const config = require("../../config")
 
 module.exports = { 
-    login: async ({ username, password }) => {
+    login: async ({ input: { username, password } }) => {
         try {
             const user = await User.findBy({name: username})
             if(!user) throw new Error("Incorrect username");
             
             const res = bcrypt.compare(password, user.password)
             if(!res) throw new Error("Incorrect password");
+            const jwtPayload = {
+                userID: user._id,
+                schoolID: user.school
+            }
             
-            renamePropertyOfObj(user, "_id", "id")
-            delete password
-            return user
+            const signedToken = jwt.sign(jwtPayload, config.secretKey)
+            return signedToken
         } catch(err) {
             if(err instanceof MongoServerError) {
                 console.log(err)
