@@ -2,20 +2,6 @@ const studentsTest = ['Carlos', 'Juan', 'Pedro', 'Yeison', 'Manolo',  'Manolo'];
 
 const students = document.querySelector('.students');
 
-function fetchData(query) {
-  return fetch('http://localhost:3000/graphql', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json'
-  },
-  body: JSON.stringify({
-    query: query
-  })
-})
-.then(res => res.json())
-}
-
-
 const Query = `
 query 
 {
@@ -52,7 +38,7 @@ const Schools = fetchData(Query)
         <button onclick = "deletingStudent('id${school.id}')" id="delete">X</button>
 
         <form method = "GET" action = "/edit"> 
-          <input type = "submit" class = "editar" value = "Enviar">
+          <input type = "submit" class = "editar" value = "Editar">
           <input type = "hidden" name = "id" value = "${school.id}">
         </form>
 

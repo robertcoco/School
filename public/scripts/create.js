@@ -33,8 +33,6 @@ button.addEventListener('click', () => {
     );
 });
 
-  
-
 function fetchData(query) {
     return fetch('http://localhost:3000/graphql', {
     method: 'POST',

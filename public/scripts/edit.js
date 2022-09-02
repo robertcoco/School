@@ -10,34 +10,21 @@ const button = document.getElementById("Edit-Button");
 let id = window.location.search;
 id = id.replace("?id=", "");
 
-function fetchData(query) {
-    return fetch('http://localhost:3000/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-    },
-    body: JSON.stringify({
-      query: query
-    })
-  })
-  .then(res => res.json())
-  }
-
-  const query = `
-  query 
-  {
-    student(id:"${id}") {
-      id,
-      name,
-      age,
-      admissionDate,
-      lastname,
-      direction,
-      averageGrade,
-      school
-      }
+const query = `
+query 
+{
+  student(id:"${id}") {
+    id,
+    name,
+    age,
+    admissionDate,
+    lastname,
+    direction,
+    averageGrade,
+    school
     }
-  `;
+  }
+`;
 
 const formatDate = (current_datetime)=>{
 let formatted_date = current_datetime.getFullYear() 
@@ -49,7 +36,7 @@ let formatted_date = current_datetime.getFullYear()
     current_datetime.getDate() > 10 ?(current_datetime.getDate() + 1) :("0" + (current_datetime.getDate() + 1))
     )
 
-return formatted_date;
+return formatted_date;º
 }
 
 const StudentData = fetchData(query).then(data => {
