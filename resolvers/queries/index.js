@@ -5,7 +5,9 @@ const { Student } = require("../../models/student")
 const { renamePropertyOfObj } = require("../../utils/helpers")
 
 module.exports = { 
-    user: async ({ id }) => {
+    user: async ({ id }, ctx) => {
+        if(!ctx.isAuthen) throw new Error("Error 401: Unauthenticated user");
+
         try {
             const user = await User.get(id)
             if(!user) {
@@ -43,9 +45,11 @@ module.exports = {
             throw err;
         }
     },
-    student: async ({ id }) => {
+    student: async ({ id }, ctx) => {
+        if(!ctx.isAuthen) throw new Error("Error 401: Unauthenticated user");
+
         try {
-            const student = await Student.get(id)
+            const student = await Student.get(id, ctx.loginData.schoolID)
 
             if(!student) {
                 throw new Error("student not found, error 404")
@@ -62,9 +66,12 @@ module.exports = {
             throw err;
         }
     },
-    students: async () => {
+    students: async (args, ctx) => {
+        if(!ctx.isAuthen) throw new Error("Error 401: Unauthenticated user");
+
         try {
-            const students = await Student.getAll()
+            console.log(ctx.loginData.schoolID)
+            const students = await Student.getAll(ctx.loginData.schoolID)
             students.forEach((student) => renamePropertyOfObj(student, "_id", "id"))
             return students
         } catch(err) {
