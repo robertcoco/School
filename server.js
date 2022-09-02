@@ -3,6 +3,7 @@ const cors = require("cors")
 const path = require("path")
 const UseRouters = require("./utils/useRouter")
 const { requestLogger, errorLogger } = require("./middlewares/appLogger")
+const { Authentication } = require("./middlewares/auth")
 const config = require("./config")
 
 const port = config.port || 3000
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }))
 // Global Middlewares
 app.use(cors())
 app.use(requestLogger)
+app.use(Authentication)
 
 // Set Routers
 UseRouters(app)

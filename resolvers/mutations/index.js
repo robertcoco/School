@@ -20,7 +20,7 @@ module.exports = {
             }
             
             const signedToken = jwt.sign(jwtPayload, config.secretKey)
-            return signedToken
+            return {token: signedToken}
         } catch(err) {
             if(err instanceof MongoServerError) {
                 console.log(err)
@@ -30,23 +30,25 @@ module.exports = {
             throw err;
         }
     },
-    createStudent: async ({ input }) => {
+    createStudent: async ({ input }, ctx) => {
+        if(!ctx.isAuthen) throw new Error("Error 401: Unauthenticated user");
+
         try {
             const defaultData = {
                 direction: ""
             }
 
+            const inputData = {...defaultData, ...input}
+            inputData.school = ctx.loginData.schoolID
             const res = await Student.create({...defaultData, ...input})
             if(!res) {
                 throw new Error("Student could not be created because of BadRequest")
             }
 
             const student = {
-                ...defaultData,
-                ...input,
+                ...inputData,
                 id: res.insertedId
             }
-            console.log(student)
             return student
         } catch(err) {
             if(err instanceof MongoServerError) {
@@ -57,7 +59,9 @@ module.exports = {
             throw err;
         }
     },
-    updateStudent: async ({ id, input }) => {
+    updateStudent: async ({ id, input }, ctx) => {
+        if(!ctx.isAuthen) throw new Error("Error 401: Unauthenticated user");
+
         try {
             const res = await Student.update(id, input)
             if(!res || res.modifiedCount < 1) {
@@ -76,7 +80,9 @@ module.exports = {
             throw err;
         }
     },
-    deleteStudent: async ({ id }) => {
+    deleteStudent: async ({ id }, ctx) => {
+        if(!ctx.isAuthen) throw new Error("Error 401: Unauthenticated user");
+
         try {
             const student = await Student.get(id)
             if(!student) throw new Error("404 Student not found");

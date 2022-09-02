@@ -39,17 +39,19 @@ function fetchData(query) {
     }
   `;
 
-const formatDate = (current_datetime)=>{
-let formatted_date = current_datetime.getFullYear() 
-+ "-" + (
-    current_datetime.getMonth() > 10 ?(current_datetime.getMonth() + 1) :("0" + (current_datetime.getMonth() + 1))
-  ) 
+const formatDate = (current_datetime)=> {
+  let formatted_date = current_datetime.getFullYear() 
+  + "-" + (
+      current_datetime.getMonth() > 10 
+        ?(current_datetime.getMonth() + 1) 
+        :("0" + (current_datetime.getMonth() + 1))
+    ) 
 
-+ "-" + (
-    current_datetime.getDate() > 10 ?(current_datetime.getDate() + 1) :("0" + (current_datetime.getDate() + 1))
-    )
+  + "-" + current_datetime.getDate() > 10 
+            ?(current_datetime.getDate() + 1) 
+            :("0" + (current_datetime.getDate() + 1))
 
-return formatted_date;
+  return formatted_date;
 }
 
 const StudentData = fetchData(query).then(data => {

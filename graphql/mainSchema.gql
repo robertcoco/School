@@ -49,7 +49,6 @@ input StudentInput {
     admissionDate: Date!
     averageGrade: Float!
     direction: String
-    school: ID!
 }
 
 input StudentUpdateInput {
@@ -59,7 +58,6 @@ input StudentUpdateInput {
     admissionDate: Date
     averageGrade: Float
     direction: String
-    school: ID
 }
 
 input LoginInput {
