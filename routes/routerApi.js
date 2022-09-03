@@ -5,6 +5,7 @@ const GetGqlFile = require("../utils/getGqlFile")
 const GraphQLDate = require("../resolvers/customScalars/date")
 const queriesResolvers = require("../resolvers/queries")
 const mutationsResolvers = require("../resolvers/mutations")
+const { Authentication } = require("../middlewares/auth")
 
 const router = express.Router()
 
@@ -16,7 +17,7 @@ var root = {
   ...mutationsResolvers
 };
 
-router.use('/', graphqlHTTP({
+router.use('/', Authentication, graphqlHTTP({
   schema: schema,
   rootValue: root,
   graphiql: true

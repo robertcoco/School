@@ -1,47 +1,32 @@
-const studentsTest = ['Carlos', 'Juan', 'Pedro', 'Yeison', 'Manolo',  'Manolo'];
-
 const students = document.querySelector('.students');
-window.addEventListener('hashchange', () => {
-    console.log(window.location.hash);
-});
-const Query = `
-query 
-{
-    school (id:"62fe5b1682ebbbb0d0f6c8e1") {
-      name
-    }
-    school1:school (id:"62fe5b1682ebbbb0d0f6c8e2") {
-      name
-    }
-    school2:school (id:"62fe5b1682ebbbb0d0f6c8e3") {
-      name
-    }
+
+const studentComponent = (data) =>(`
+  <div class="card" style = 'background: #fefefe'>
+    <div class="card-body">
+      <h4 class="card-title">${data.name}</h4>
+      <p class="card-text">${data.direction}</p>
+      <p id ='etiqueta'>${data.averageGrade}</p> 
+      <input type = "hidden" class= "id${data.id}" value = "${data.id}">
+      <button onclick = "deletingStudent('id${data.id}')" id="delete">X</button>
+
+      <form method = "GET" action = "/edit"> 
+        <input type = "submit" class = "editar" value = "Editar">
+        <input type = "hidden" name = "id" value = "${data.id}">
+      </form>
+    </div>
+  </div>
+`)
+
+async function renderStudents() {
+  const query = GetFetchQueries("student", "getAll")
+  const studentsData = await fetchData(query)
+  let allStudents = []
+
+  studentsData.forEach(student => allStudents.push(studentComponent(student)) );
+  students.append(allStudents)
 }
-`;
-
-const Schools = fetchData(Query)
-.then(async data => {
-
-  const fragment = document.createDocumentFragment();
-  const divElement = document.createElement('DIV');
-  divElement.className = "Nuevo"
-
-  schools = await Object.values(data.data);
-
-  schools.forEach(school => {
-    const card = `
-      <div class="card" style = 'background: #fefefe'>
-          <div class="card-body">
-              <h4 class="card-title">${school.name}</h4>
-              <p class="card-text">School:Next Bootcamp</p>
-              <p id ='etiqueta'>See students</p> 
-              <a href = '/students' id ='boton'>Est</a>
-          </div>
-      </div>`
-      divElement.innerHTML += card;
-      fragment.appendChild(divElement);
-  })
 
 
-  students.appendChild(fragment);
+window.addEventListener("load", ()=> {
+  renderStudents()
 })

@@ -2,21 +2,8 @@ const studentsTest = ['Carlos', 'Juan', 'Pedro', 'Yeison', 'Manolo',  'Manolo'];
 
 const students = document.querySelector('.students');
 
-const Query = `
-query 
-{
-  students {
-    id
-    name,
-    direction,
-    averageGrade
-    }
-  }
-`;
-
 // showing students on the page
-const Schools = fetchData(Query)
-.then(data => {
+const Schools = data => {
   
   const fragment = document.createDocumentFragment();
   const divElement = document.createElement('DIV');
@@ -51,7 +38,7 @@ const Schools = fetchData(Query)
         
         students.appendChild(fragment);
 
-      })
+}
       
 function deletingStudent(id) 
 {
@@ -67,5 +54,3 @@ function deletingStudent(id)
     fetchData(queryDelete).then(data => console.log(data.data));
     location.reload();
 }
-
-
