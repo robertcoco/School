@@ -3,7 +3,7 @@ async function fetchData(query) {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
-            // "Authorization": "Bearer "
+            "Authorization": `Bearer ${localStorage.jwt}`
         },
         body: JSON.stringify({
             query: query
@@ -12,6 +12,5 @@ async function fetchData(query) {
 
     const response = await fetched.json()
     if(!response) throw new Error("Null Response, check url API");
-
     return response
 }

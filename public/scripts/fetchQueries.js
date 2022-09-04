@@ -14,7 +14,7 @@ const queryState = (payload) => ({
             query 
             {
                 students {
-                    id
+                    id,
                     name,
                     direction,
                     averageGrade
@@ -22,8 +22,15 @@ const queryState = (payload) => ({
             }
         `,
         create: `
-            mutation: { 
-                createStudent(input: ${JSON.stringify(payload)}) {
+            mutation { 
+                createStudent(input: {
+                   name: "${payload.name}",
+                   lastname: "${payload.lastName}",
+                   age: ${payload.age},
+                   admissionDate: "${payload.admissionDate}",
+                   averageGrade: ${payload.averageGrade},
+                   direction: "${payload.direction}"
+                }) {
                     id
                     name
                 }
