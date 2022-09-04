@@ -53,7 +53,6 @@ function AuthenticationViews(req, res, next) {
     }
 
     const sentToken = jwtCookie.split("=")[1].trim()
-    console.log(sentCookies)
     if(!sentToken) {
         req.isAuthen = false
         return next()

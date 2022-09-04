@@ -1,4 +1,4 @@
-const { MongoServerError } = require("mongodb")
+const { MongoServerError, ObjectId } = require("mongodb")
 const { User } = require("../../models/user")
 const { Student } = require("../../models/student")
 const { renamePropertyOfObj } = require("../../utils/helpers")
@@ -39,8 +39,9 @@ module.exports = {
             }
 
             const inputData = {...defaultData, ...input}
-            inputData.school = ctx.loginData.schoolID
-            const res = await Student.create({...defaultData, ...input})
+            inputData.school = new ObjectId(ctx.loginData.schoolID)
+            
+            const res = await Student.create(inputData)
             if(!res) {
                 throw new Error("Student could not be created because of BadRequest")
             }

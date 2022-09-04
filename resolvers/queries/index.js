@@ -70,7 +70,6 @@ module.exports = {
         if(!ctx.isAuthen) throw new Error("Error 401: Unauthenticated user");
 
         try {
-            console.log(ctx.loginData.schoolID)
             const students = await Student.getAll(ctx.loginData.schoolID)
             students.forEach((student) => renamePropertyOfObj(student, "_id", "id"))
             return students
