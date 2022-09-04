@@ -12,7 +12,7 @@ module.exports = {
             const user = await User.findBy({name: username})
             if(!user) throw new Error("Incorrect username");
             
-            const res = bcrypt.compare(password, user.password)
+            const res = await bcrypt.compare(password, user.password)
             if(!res) throw new Error("Incorrect password");
             const jwtPayload = {
                 userID: user._id,
