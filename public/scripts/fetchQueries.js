@@ -17,7 +17,8 @@ const queryState = (payload) => ({
                     id,
                     name,
                     direction,
-                    averageGrade
+                    averageGrade,
+                    admissionDate
                 }
             }
         `,
@@ -36,9 +37,30 @@ const queryState = (payload) => ({
                 }
             }  
         `,
-        edit: ``,
-        delete: ``,
+        edit:   `
+        mutation UpdateStudent
+        {
+            updateStudent(id:"${payload.id}", input:{
+                name: "${payload.name}",
+                lastname: "${payload.lastName}",
+                age: ${payload.age},
+                admissionDate: "${payload.admissionDate}",
+                averageGrade: ${payload.averageGrade},
+                direction: "${payload.direction}",
+              }) {
+            id
+          }
+        }
+        `,
+        delete: `
+        mutation {
+            deleteStudent(id:"${payload.id}"){
+              name
+            }
+          }
+        `
     }
+
 })
 
 function GetFetchQueries(queryName, queryAction, payload = {}) {

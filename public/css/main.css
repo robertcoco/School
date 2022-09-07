@@ -183,3 +183,14 @@ body {
     margin-top: 435px;
     background: #15e;
 }
+
+.loader-element {
+    color: red;
+    font-size:100px;
+}
+
+#delete {
+    position: absolute;
+    top: 0;
+    right:0;
+}

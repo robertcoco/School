@@ -20,7 +20,7 @@
                     <li class="ul-li"><a class="li-a" href="/Create">Create</a></li>
                 </ul>
                 <ul class="ul-login">
-                    <li class="ul-li"><a class="li-a" id = "login" href="/Login">Login</a></li>
+                    <li class="ul-li"><a class="li-a" id = "login" href="/Login">Logout</a></li>
                 </ul>
             </nav>
         </Header>
@@ -38,12 +38,12 @@
                         </li>
                     </ul>
                     <ul class="ul-students">
-                        <li class="li-students"><a class="li-a-students" href="/students">New students</a></li>
-                        <li class="li-students"><a class="li-a-students" href="">Best students</a></li>
+                        <li class="li-students"><button class="li-a-students" id="newStudents">New students</button></li>
+                        <li class="li-students"><button class="li-a-students" id ="bestStudents" >Best students</button></li>
                     </ul>
                 </nav>
+
             </div>
-            
         </div>
     
         <footer class="footer">
@@ -52,6 +52,7 @@
         </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="/scripts/deleteFunction.js"></script>
     <script src="/scripts/fetchData.js"></script>
     <script src="/scripts/fetchQueries.js"></script>
     <script src="/scripts/utils.js"></script>
