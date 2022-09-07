@@ -16,10 +16,11 @@ form.addEventListener('submit', async (e) => {
         id: id
     });
     
-    const {data , err} = await fetchData(query);
-    if (err) {
-        console.error(err);
-    }
-    console.log(data);
+    const res = await fetchData(query);
+    console.log(res)
+    // if (err) {
+    //     console.error(err);
+    // }
+    // console.log(data);
 
 })

@@ -38,8 +38,7 @@ const queryState = (payload) => ({
             }  
         `,
         edit:   `
-        mutation UpdateStudent
-        {
+        mutation {
             updateStudent(id:"${payload.id}", input:{
                 name: "${payload.name}",
                 lastname: "${payload.lastName}",
@@ -47,7 +46,8 @@ const queryState = (payload) => ({
                 admissionDate: "${payload.admissionDate}",
                 averageGrade: ${payload.averageGrade},
                 direction: "${payload.direction}",
-              }) {
+              }
+            ) {
             id
           }
         }
