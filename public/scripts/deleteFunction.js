@@ -4,7 +4,8 @@ async function deletingStudent(id)
   const query = GetFetchQueries("student", "delete", {
     id: identifier.value
   });
+  
   const { error, data } = await fetchData(query);
-  console.log(identifier.value);
+  if (error) return console.error(error);
   console.log(data);
 }
