@@ -69,7 +69,7 @@ module.exports = {
                 throw new Error("Student could not be updated because of BadRequest (not modified data were passed)")
             }
 
-            const student = await Student.get(id)
+            const student = await Student.get(id, ctx.loginData.schoolID)
             renamePropertyOfObj(student, "_id", "id")
             return student
         } catch(err) {
@@ -85,7 +85,7 @@ module.exports = {
         if(!ctx.isAuthen) throw new Error("Error 401: Unauthenticated user");
 
         try {
-            const student = await Student.get(id)
+            const student = await Student.get(id, ctx.loginData.schoolID)
             if(!student) throw new Error("404 Student not found");
             
             const res = await Student.delete(id)
